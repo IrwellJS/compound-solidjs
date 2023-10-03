@@ -1,4 +1,5 @@
 import 'tailwindcss/tailwind.css'
+import {Preview} from 'storybook-solidjs';
 
 const preview: Preview = {
   parameters: {
