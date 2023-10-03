@@ -19,7 +19,7 @@ export default defineConfig({
         */
         // devtools(),
         dts({
-            include: ['src/components/'],
+            include: ['src/'],
         }),
         solidPlugin(),
     ],
@@ -29,7 +29,7 @@ export default defineConfig({
     build: {
         target: 'esnext',
         lib: {
-            entry: 'src/components/index.ts',
+            entry: 'src/index.ts',
             name: 'Compound SolidJS',
             formats: ['es', 'umd'],
             fileName: (format) => `compound-solidjs.${format}.js`,
