@@ -1,19 +1,19 @@
 import { Component } from 'solid-js';
-import { Button } from './Button';
-import './header.css';
+import { Button } from '../../inputs';
+import './appbar.css';
 
 type User = {
   name: string;
 };
 
-interface HeaderProps {
+interface AppBarProps {
   user?: User;
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;
 }
 
-export const Header: Component<HeaderProps> = (props) => (
+export const AppBar: Component<AppBarProps> = (props) => (
   <header>
     <div class="wrapper bg-slate-700">
       <div>
@@ -46,17 +46,12 @@ export const Header: Component<HeaderProps> = (props) => (
             <span class="welcome">
               Welcome, <b>{props.user.name}</b>!
             </span>
-            <Button size="small" onClick={props.onLogout} label="Log out" />
+            <Button size="small" onClick={props.onLogout}>Log out</Button>
           </>
         ) : (
           <>
-            <Button size="small" onClick={props.onLogin} label="Log in" />
-            <Button
-              primary
-              size="small"
-              onClick={props.onCreateAccount}
-              label="Sign up"
-            />
+            <Button size="small" onClick={props.onLogin}>Log in</Button>
+            <Button primary size="small" onClick={props.onCreateAccount}>Sign up</Button>
           </>
         )}
       </div>

@@ -1,5 +1,5 @@
 import { Component, createSignal } from 'solid-js';
-import { Header } from '../components/Header';
+import { Index } from '../frames/AppBar';
 import './page.css';
 
 type User = {
@@ -11,7 +11,7 @@ export const Page: Component = () => {
 
   return (
     <article>
-      <Header
+      <Index
         user={user()}
         onLogin={() => setUser({ name: 'Jane Doe' })}
         onLogout={() => setUser(undefined)}

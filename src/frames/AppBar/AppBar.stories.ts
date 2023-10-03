@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
-import { Header } from './Header';
+import { AppBar } from './index';
 
-const meta = {
+const meta: Meta<typeof AppBar> = {
   title: 'Example/Header',
-  component: Header,
+  component: AppBar,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/7.0/solid/writing-docs/docs-page
   tags: ['autodocs'],
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/7.0/solid/configure/story-layout
     layout: 'fullscreen',
   },
-} satisfies Meta<typeof Header>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
