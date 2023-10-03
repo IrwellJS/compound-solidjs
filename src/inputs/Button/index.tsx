@@ -1,4 +1,4 @@
-import {Size} from '../types';
+import {Size} from '../../types';
 import {Component, JSXElement} from 'solid-js';
 
 export interface ButtonProps {
@@ -9,3 +9,5 @@ export interface ButtonProps {
 export const Button: Component<ButtonProps> = (props) => {
     return <button>{props.children}</button>
 }
+
+export default Button;
