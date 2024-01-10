@@ -17,6 +17,7 @@ export enum Size {
 }
 
 export enum Variant {
+    Basic = 'basic',
     Neutral = 'neutral',
     Primary = 'primary',
     Secondary = 'secondary',
@@ -31,4 +32,13 @@ export enum NoteVariant {
     Warning = 'warning',
     Error = 'error',
     Info = 'info',
+}
+
+export enum Orientation {
+    Horizontal = 'horizontal',
+    Vertical = 'vertical',
+}
+
+export interface CanBeJoinChild {
+    isJoinChild?: boolean;
 }

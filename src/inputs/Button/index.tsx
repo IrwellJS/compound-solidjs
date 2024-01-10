@@ -1,7 +1,7 @@
 import {Component, createEffect, createSignal, mergeProps, splitProps} from 'solid-js';
-import {Fit, Shape, Size, Variant} from '../../types';
+import {CanBeJoinChild, Fit, Shape, Size, Variant} from '../../types';
 
-export interface ButtonProps {
+export interface ButtonProps extends CanBeJoinChild {
     children: string;
     fit?: Fit;
     size?: Size;
@@ -17,9 +17,10 @@ export const ButtonDefaultProps: Required<ButtonProps> = {
     fit: Fit.Inline,
     size: Size.Md,
     shape: Shape.Rectangle,
-    variant: Variant.Primary,
+    variant: Variant.Basic,
     onClick: () => {},
     disabled: false,
+    isJoinChild: false,
 }
 
 // This is a safe list of classes so that the tree shaking can run correctly on css
@@ -52,11 +53,18 @@ export const Button: Component<ButtonProps> = (props) => {
         'size',
         'shape',
         'variant',
+        'isJoinChild'
     ]);
 
     const [classes, setClasses] = createSignal<string>('btn');
     createEffect(() => {
-        setClasses(`btn btn-${local.size} btn-${local.fit} btn-${local.variant} btn-${local.shape}`);
+        setClasses(`btn
+            btn-${local.size}
+            btn-${local.fit}
+            btn-${local.variant}
+            btn-${local.shape}
+            ${(local.isJoinChild ? 'join-item' : '')}
+        `);
     });
 
     return (

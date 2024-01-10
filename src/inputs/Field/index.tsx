@@ -1,5 +1,5 @@
 import {Component, createEffect, createSignal, splitProps} from 'solid-js';
-import {NoteVariant, Size} from '../../types';
+import {CanBeJoinChild, NoteVariant, Size} from '../../types';
 
 const classSafeList = [
     'input-info',
@@ -12,7 +12,7 @@ const classSafeList = [
 ];
 const initClasses = 'input input-bordered w-full max-w-xs';
 
-interface InputProps  {
+interface InputProps extends CanBeJoinChild  {
     label?: string;
     labelExtra?: string;
     placeholder?: string;
@@ -21,7 +21,7 @@ interface InputProps  {
     disabled?: boolean;
 }
 
-const localKeys: Array<keyof InputProps> = ['label', 'labelExtra', 'variant', 'size'];
+const localKeys: Array<keyof InputProps> = ['label', 'labelExtra', 'variant', 'size', 'isJoinChild'];
 
 const getLabel = (props: InputProps) => {
     if (!props.label && !props.labelExtra) {
@@ -49,6 +49,10 @@ const Field: Component<InputProps> = (props) => {
 
         if (local.size) {
             c += ` input-${local.size}`;
+        }
+
+        if (local.isJoinChild) {
+            c += ` join-item`;
         }
 
         setClasses(c);
