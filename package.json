@@ -47,5 +47,8 @@
   },
   "peerDependencies": {
     "solid-js": "^1.7.6"
+  },
+  "dependencies": {
+    "daisyui": "^4.5.0"
   }
 }

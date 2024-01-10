@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from 'storybook-solidjs';
 
 import {Button, ButtonDefaultProps, ButtonProps} from './index';
-import {Fit, Size, Variant} from '../../types';
+import {Fit, Shape, Size, Variant} from '../../types';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/solid/writing-stories/introduction
 const meta: Meta<typeof Button> = {
@@ -20,9 +20,18 @@ const meta: Meta<typeof Button> = {
         },
         size: {
             description: 'The size of the button',
-            defaultValue: Size.Small,
+            defaultValue: Size.Md,
             options: Object.values(Size),
             mapping: Size,
+            control: {
+                type: 'select',
+            },
+        },
+        shape: {
+            description: 'The shape of the button',
+            defaultValue: Shape.Rectangle,
+            options: Object.values(Shape),
+            mapping: Shape,
             control: {
                 type: 'select',
             },
@@ -45,8 +54,8 @@ type Story = StoryObj<typeof meta>;
 const getStory = (props: Partial<ButtonProps>): Story => {
     return {
         args: {
-            children: 'Button',
             ...ButtonDefaultProps,
+            children: 'Button',
             ...props
         }
     }
@@ -54,11 +63,11 @@ const getStory = (props: Partial<ButtonProps>): Story => {
 
 // More on writing stories with args: https://storybook.js.org/docs/7.0/solid/writing-stories/args
 export const Fit_Inline: Story = getStory({fit: Fit.Inline});
-export const Fit_Justify: Story = getStory({fit: Fit.Justify});
+export const Fit_Justify: Story = getStory({fit: Fit.Block});
 
-export const Size_Small: Story = getStory({size: Size.Small});
-export const Size_Medium: Story = getStory({size: Size.Medium});
-export const Size_Large: Story = getStory({size: Size.Large});
+export const Size_Small: Story = getStory({size: Size.Sm});
+export const Size_Medium: Story = getStory({size: Size.Md});
+export const Size_Large: Story = getStory({size: Size.Lg});
 
 export const Variant_Primary: Story = getStory({variant: Variant.Primary});
 export const Variant_Primary_Disabled: Story = getStory({variant: Variant.Primary, disabled: true});
