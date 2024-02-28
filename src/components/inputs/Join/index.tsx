@@ -1,5 +1,5 @@
 import {Component, createEffect, createSignal, JSXElement, splitProps} from 'solid-js';
-import {Orientation} from '../../types';
+import {Orientation} from '../../../types';
 
 const classSafeList = [
     'join-vertical',

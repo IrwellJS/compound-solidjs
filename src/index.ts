@@ -1,2 +1,2 @@
-export * from './frames';
+export * from './widgets';
 export * from './inputs';

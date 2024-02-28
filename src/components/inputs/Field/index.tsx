@@ -1,5 +1,5 @@
 import {Component, createEffect, createSignal, splitProps} from 'solid-js';
-import {CanBeJoinChild, NoteVariant, Size} from '../../types';
+import {CanBeJoinChild, NoteVariant, Size} from '../../../types';
 
 const classSafeList = [
     'input-info',

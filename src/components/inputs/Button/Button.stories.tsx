@@ -1,11 +1,11 @@
 import type {Meta, StoryObj} from 'storybook-solidjs';
 
 import {Button, ButtonDefaultProps, ButtonProps} from './index';
-import {Fit, Shape, Size, Variant} from '../../types';
+import {Fit, Shape, Size, Variant} from '../../../types';
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/solid/writing-stories/introduction
 const meta: Meta<typeof Button> = {
-    title: 'Inputs/Button',
+    title: 'Components/Inputs/Button',
     component: Button,
     tags: ['autodocs'],
     argTypes: {

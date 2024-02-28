@@ -1,5 +1,5 @@
 import {Component, createEffect, createSignal, mergeProps, splitProps} from 'solid-js';
-import {CanBeJoinChild, Fit, Shape, Size, Variant} from '../../types';
+import {CanBeJoinChild, Fit, Shape, Size, Variant} from '../../../types';
 
 export interface ButtonProps extends CanBeJoinChild {
     children: string;

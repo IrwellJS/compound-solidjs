@@ -34,6 +34,9 @@ export enum NoteVariant {
     Info = 'info',
 }
 
+export const AllVariants = { ...Variant, ...NoteVariant};
+export type AllVariants = typeof AllVariants;
+
 export enum Orientation {
     Horizontal = 'horizontal',
     Vertical = 'vertical',
