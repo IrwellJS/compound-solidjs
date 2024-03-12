@@ -1,5 +1,5 @@
 import { Component, createSignal } from 'solid-js';
-import { AppBar } from '../frames/AppBar';
+import { AppBar } from '../widgets/AppBar';
 import './page.css';
 
 type User = {

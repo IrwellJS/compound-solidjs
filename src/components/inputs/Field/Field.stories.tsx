@@ -1,11 +1,11 @@
 import type {Meta, StoryObj} from 'storybook-solidjs';
 import Field from './index';
-import {NoteVariant, Size} from '../../types';
+import {NoteVariant, Size} from '../../../types';
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/solid/writing-stories/introduction
 const meta: Meta<typeof Field> = {
-    title: 'Inputs/Field',
+    title: 'Components/Inputs/Field',
     component: Field,
     tags: ['autodocs'],
     argTypes: {

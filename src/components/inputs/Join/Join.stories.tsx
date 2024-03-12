@@ -1,13 +1,13 @@
 import type {Meta, StoryObj} from 'storybook-solidjs';
 import Join from './index';
-import {Orientation, Variant} from '../../types';
+import {Orientation, Variant} from '../../../types';
 import {Button} from '../';
 import Field from '../Field';
 
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/solid/writing-stories/introduction
 const meta: Meta<typeof Join> = {
-    title: 'Inputs/Join',
+    title: 'Components/Inputs/Join',
     component: Join,
     tags: ['autodocs'],
     argTypes: {
