@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./src/**/*.{ts,tsx}'],
+  purge: ['./lib/**/*.{ts,tsx}'],
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
