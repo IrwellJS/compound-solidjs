@@ -16,12 +16,10 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/compound-solidjs.es.js",
-      "require": "./dist/compound-solidjs.umd.js"
+      "import": "./dist/index.js"
     }
   },
-  "main": "./dist/inded.js",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "devDependencies": {
