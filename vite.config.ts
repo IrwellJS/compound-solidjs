@@ -1,6 +1,8 @@
 import {defineConfig} from 'vite';
 import solidPlugin from 'vite-plugin-solid';
 import dts from 'vite-plugin-dts';
+import {libInjectCss} from "vite-plugin-lib-inject-css";
+import { resolve } from 'path'
 // import devtools from 'solid-devtools/vite';
 
 import * as pj from './package.json'
@@ -18,8 +20,9 @@ export default defineConfig({
         For more info see https://github.com/thetarnav/solid-devtools/tree/main/packages/extension#readme
         */
         // devtools(),
+        libInjectCss(),
         dts({
-            include: ['src/'],
+            include: ['lib/'],
         }),
         solidPlugin(),
     ],
@@ -27,9 +30,10 @@ export default defineConfig({
         port: 3000,
     },
     build: {
+        copyPublicDir: false,
         target: 'esnext',
         lib: {
-            entry: 'src/index.ts',
+            entry: resolve(__dirname, 'lib/index.ts'),
             name: 'Compound SolidJS',
             formats: ['es', 'umd'],
             fileName: (format) => `compound-solidjs.${format}.js`,
