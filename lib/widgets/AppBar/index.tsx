@@ -1,7 +1,4 @@
 import {Component} from 'solid-js';
-import './appbar.css';
-import {Indicator} from '../../components';
-import {AllVariants, Size} from '../../types';
 
 type User = {
   name: string;
