@@ -9,7 +9,7 @@ const config: Config = {
   ],
   darkMode: 'class',
   daisyui: {
-    themes: ['garden']
+    themes: ['emerald']
   },
   theme: {
     extend: theme,
