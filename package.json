@@ -20,8 +20,8 @@
       "require": "./dist/compound-solidjs.umd.js"
     }
   },
-  "main": "./dist/compound-solidjs.umd.js",
-  "module": "./dist/compound-solidjs.es.js",
+  "main": "./dist/inded.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "devDependencies": {
@@ -31,6 +31,7 @@
     "@storybook/blocks": "^7.4.3",
     "@storybook/testing-library": "^0.2.1",
     "autoprefixer": "^10.4.14",
+    "glob": "^10.3.10",
     "postcss": "^8.4.24",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -51,5 +52,8 @@
   },
   "dependencies": {
     "daisyui": "^4.5.0"
-  }
+  },
+  "sideEffects": [
+    "**/*.css"
+  ]
 }
