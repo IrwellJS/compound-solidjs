@@ -1,0 +1,47 @@
+.blockquote {
+    @apply border-l-4 border-gray-900 px-4 py-1;
+}
+
+.blockquote-primary {
+    @apply border-primary;
+}
+
+.blockquote-secondary {
+    @apply border-secondary;
+}
+
+.blockquote-accent {
+    @apply border-accent;
+}
+
+.blockquote-neutral {
+    @apply border-neutral;
+}
+
+.blockquote-accent {
+    @apply border-accent;
+}
+
+.blockquote-ghost {
+    @apply border-base-200;
+}
+
+.blockquote-info {
+    @apply border-info;
+}
+
+.blockquote-success {
+    @apply border-success;
+}
+
+.blockquote-warning {
+    @apply border-warning;
+}
+
+.blockquote-error {
+    @apply border-error;
+}
+
+.blockquote-outline {
+    @apply border-t border-r border-b;
+}
