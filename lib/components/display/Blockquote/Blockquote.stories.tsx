@@ -27,7 +27,7 @@ type Story = StoryObj<typeof meta>;
 const getStory = (props: Partial<BlockquoteProps>): Story => {
     return {
         args: {
-            children: 'content 2',
+            children: <p>Some content</p>,
             ...props
         }
     }
@@ -39,3 +39,6 @@ export const Basic_Indicator: Story = getStory({
 });
 
 export const Basic: Story = getStory({});
+export const Multiple_Paragrams: Story = getStory({
+    children: <><p>para 1</p><p>para 2</p></>,
+});

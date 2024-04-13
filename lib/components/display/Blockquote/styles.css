@@ -1,6 +1,12 @@
 .blockquote {
     @apply border-l-4 border-gray-900 px-4 py-1;
 }
+.blockquote p:first-child {
+    @apply mt-0;
+}
+.blockquote p:last-child {
+    @apply mb-0;
+}
 
 .blockquote-primary {
     @apply border-primary;
