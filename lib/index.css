@@ -5,3 +5,39 @@
 p {
     @apply my-5 leading-7;
 }
+
+h1 {
+    @apply text-4xl font-bold mb-4 font-extrabold;
+}
+h2 {
+    @apply text-2xl font-bold mb-4 mt-8 font-bold;
+}
+h3 {
+    @apply text-lg font-bold mb-4 mt-8 font-semibold;
+}
+h4 {
+    @apply text-xl font-bold mb-4 mt-8;
+}
+h5 {
+    @apply text-lg font-bold mb-4 mt-8;
+}
+h6 {
+    @apply text-base font-bold mb-4 mt-8;
+}
+
+ul, ol {
+    @apply mb-5 list-disc pl-7;
+}
+ul {
+    @apply list-disc;
+}
+ol {
+    @apply list-decimal;
+}
+ul li, ol li {
+    @apply my-2 pr-2;
+}
+
+a {
+    @apply text-secondary underline;
+}
