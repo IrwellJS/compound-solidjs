@@ -1,3 +1,7 @@
 .codeblock {
     @apply bg-gray-800 text-gray-200 rounded-lg py-4 px-8;
 }
+
+.codeblock.codeblock-inline {
+    @apply py-0 px-2;
+}

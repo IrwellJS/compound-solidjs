@@ -19,6 +19,7 @@ const getStory = (props: Partial<CodeblockProps>): Story => {
     <pre data-prefix="2"><code>installing...</code></pre>
     <pre data-prefix="3"><code>Error!</code></pre>
 </div>`,
+            inline: false,
             ...props
         }
     }
@@ -26,3 +27,4 @@ const getStory = (props: Partial<CodeblockProps>): Story => {
 
 
 export const Basic: Story = getStory({});
+export const Basic_Inline: Story = getStory({code: 'npm i daisyui', inline: true});
