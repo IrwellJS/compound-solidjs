@@ -22,7 +22,7 @@ export interface BlockquoteProps {
     children: JSXElement;
 }
 
-const Blockquote: Component<BlockquoteProps> = (props) => {
+export const Blockquote: Component<BlockquoteProps> = (props) => {
     return (
         <blockquote class={`blockquote blockquote-${(props.variant || AllVariants.Basic)}`}>
             {props.children}
