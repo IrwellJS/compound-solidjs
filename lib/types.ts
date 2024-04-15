@@ -3,6 +3,14 @@ export enum Fit {
     Inline = 'inline',
 }
 
+export enum AspectRatio {
+    Square = '1-1',
+    FullFrame = '3-2',
+    StandardDefinition = '4-3',
+    HighDefinition = '16-9',
+    Cinema = '21-9',
+}
+
 export enum Shape {
     Circle = 'circle',
     Square = 'square',

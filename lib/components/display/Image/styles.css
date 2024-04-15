@@ -1,0 +1,59 @@
+.image-loader {
+    position: relative;
+    outline: theme('colors.primary') solid 1px;
+}
+.image-loader.loaded {
+    outline: none;
+    transition: outline 0.5s 0.5s;
+}
+
+.image-loader img {
+    display: block;
+    height: auto;
+    width: 100%;
+    opacity: 0;
+    object-fit: cover;
+}
+.image-loader.loaded img {
+    opacity: 1;
+    transition: opacity 0.5s 0.5s;
+}
+.image-loader .spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.image-loader.loaded .spinner {
+    opacity: 0;
+    transition: opacity 0.5s 0.5s;
+}
+
+.image-loader.aspect-ratio-16-9, .image-loader.aspect-ratio-16-9 img {
+    aspect-ratio: 16 / 9;
+}
+.image-loader.aspect-ratio-4-3, .image-loader.aspect-ratio-4-3 img {
+    aspect-ratio: 4 / 3;
+}
+.image-loader.aspect-ratio-1-1, .image-loader.aspect-ratio-1-1 img {
+    aspect-ratio: 1 / 1;
+}
+.image-loader.aspect-ratio-3-4, .image-loader.aspect-ratio-3-2 img {
+    aspect-ratio: 3 / 2;
+}
+.image-loader.aspect-ratio-21-9, .image-loader.aspect-ratio-21-9 img {
+    aspect-ratio: 21 / 9;
+}
+
+.image-loader.image-loader-primary {
+    outline-color: theme('colors.primary');
+}
+.image-loader.image-loader-secondary {
+    outline-color: theme('colors.secondary');
+}
+.image-loader.image-loader-accent {
+    outline-color: theme('colors.accent');
+}
+.image-loader.image-loader-neutral {
+    outline-color: theme('colors.neutral');
+}
