@@ -23,7 +23,6 @@ export enum Variant {
     Secondary = 'secondary',
     Accent = 'accent',
     Ghost = 'ghost',
-    Link = 'link',
 }
 
 export enum NoteVariant {

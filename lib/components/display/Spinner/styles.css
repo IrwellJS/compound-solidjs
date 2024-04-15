@@ -1,0 +1,47 @@
+.spinner {
+    @apply loading loading-ring;
+}
+
+.spinner-primary {
+    @apply text-primary;
+}
+.spinner-secondary {
+    @apply text-secondary;
+}
+.spinner-accent {
+    @apply text-accent;
+}
+.spinner-neutral {
+    @apply text-neutral;
+}
+.spinner-accent {
+    @apply text-accent;
+}
+.spinner-ghost {
+    @apply text-base-200;
+}
+.spinner-info {
+    @apply text-info;
+}
+.spinner-success {
+    @apply text-success;
+}
+.spinner-warning {
+    @apply text-warning;
+}
+.spinner-error {
+    @apply text-error;
+}
+
+.spinner-xs {
+    width: 1.5rem;
+}
+.spinner-sm {
+    width: 3rem;
+}
+.spinner-md {
+    width: 4rem;
+}
+.spinner-lg {
+    width: 8rem;
+}
