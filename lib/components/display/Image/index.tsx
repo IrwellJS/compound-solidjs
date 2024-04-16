@@ -34,7 +34,7 @@ export const Image: Component<ImageProps> = (props) => {
                 onLoad={() => setStatus(ImageLoadingStatus.Loaded)}
                 onError={() => setStatus(ImageLoadingStatus.Error)}
             />
-            <Spinner variant={props.variant} />
+            <div class="spinner-container"><Spinner variant={props.variant} /></div>
             {status() === ImageLoadingStatus.Error && <span>Error loading image</span>}
         </div>
     );
