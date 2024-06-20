@@ -1,0 +1,47 @@
+.slider {
+    @apply pb-2;
+    overflow: hidden;
+    .header {
+        display: flex;
+        align-items: start;
+        margin-bottom: 1rem;
+        .title {
+            @apply text-2xl font-bold m-0;
+        }
+        .controls {
+            display: flex;
+            margin-left: auto;
+            gap: 5px;
+        }
+    }
+    .show {
+        display: flex;
+        width: 100%;
+        transition: transform 0.5s ease-in-out;
+        gap: 20px;
+        .slide {
+            @apply shadow-md bg-white border flex-grow-0 flex-shrink-0 flex flex-col;
+            transition: transform 0.5s ease-in-out;
+            border-radius: var(--rounded-box);
+            width: 90%;
+
+            @screen sm {
+                width: 45%;
+            }
+            @screen md {
+                width: 30%
+            }
+
+            .title {
+                @apply text-lg font-bold m-0 p-4;
+            }
+            .content {
+                @apply text-sm px-4 pb-4;
+            }
+            .slide-footer {
+                @apply px-4 pb-4;
+                margin-top: auto;
+            }
+        }
+    }
+}
