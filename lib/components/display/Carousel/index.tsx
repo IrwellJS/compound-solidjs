@@ -1,19 +1,33 @@
-import {Component, createEffect, createSignal} from "solid-js";
-import {Shape, Size, Variant} from "../../../types";
+import {Component, createEffect, createSignal, onCleanup, onMount} from "solid-js";
+import {Fit, Shape, Size, Variant} from "../../../types";
 import {Button} from "../../inputs";
 import {ChevronLeftIcon, ChevronRightIcon} from "../../icons";
+import {Card} from "../Card";
 
 import './styles.css';
+import {createBreakpoints} from "@solid-primitives/media";
+import {TouchEvent, TouchEventHandler} from "react";
 
 export interface CarouselProps {
     title: string;
 }
 
+const breakpoints = {
+    sm: "640px",
+    md: "1024px",
+};
+
 export const Carousel: Component<CarouselProps> = (props) => {
     const [numberOfSlides, setNumberOfSlides] = createSignal(0);
-    const [slideWidth, setSlideWidth] = createSignal(30);
+    const [slideWidth, setSlideWidth] = createSignal(42);
     const [itemsPerView, setItemsPerView] = createSignal(3);
     const [currentSlideIndex, setCurrentSlideIndex] = createSignal(0);
+    const [adjustment, setAdjustment] = createSignal(0);
+
+    const matches = createBreakpoints(breakpoints, {
+        mediaFeature: 'min-width',
+    });
+
     function nextSlide() {
         const nextIndex = (currentSlideIndex() + 1) % numberOfSlides();
         setCurrentSlideIndex(nextIndex);
@@ -26,12 +40,44 @@ export const Carousel: Component<CarouselProps> = (props) => {
 
     let carouselContainer!: HTMLDivElement;
     function updateSlidePosition() {
-        carouselContainer.style.transform = `translateX(calc(-${currentSlideIndex() * slideWidth()}% - ${currentSlideIndex() * 20}px))`;
+        carouselContainer.style.transform = `translateX(calc(-${currentSlideIndex() * slideWidth()}% - ${currentSlideIndex() * 24}px + ${adjustment()}px))`;
     }
 
     createEffect(() => {
-        setNumberOfSlides(carouselContainer.querySelectorAll('.slide').length);
+        setNumberOfSlides(carouselContainer.getElementsByTagName('div').length);
+
+        if (matches.md) {
+            setSlideWidth(30);
+        } else if(matches.sm) {
+            setSlideWidth(42);
+        } else {
+            setSlideWidth(85);
+        }
+
         updateSlidePosition();
+    });
+
+    const [touchStartX, setTouchStartX] = createSignal(0);
+
+    const touchStart: TouchEventHandler = (ev: TouchEvent) => {
+        setTouchStartX(ev.touches[0].clientX);
+    }
+    const touchMove = (e: TouchEvent) => {
+        setAdjustment(e.touches[0].clientX - touchStartX());
+    }
+    const touchEnd = (e: TouchEvent) => {
+        setAdjustment(e.touches[0].clientX - touchStartX());
+    }
+
+    onMount(() => {
+        carouselContainer.addEventListener('touchstart', touchStart as unknown as EventListener);
+        carouselContainer.addEventListener('touchmove', touchMove as unknown as EventListener);
+        carouselContainer.addEventListener('touchend', touchEnd as unknown as EventListener);
+    });
+    onCleanup(() => {
+        removeEventListener('touchstart', touchStart as unknown as EventListener);
+        removeEventListener('touchmove', touchMove as unknown as EventListener);
+        removeEventListener('touchend', touchEnd as unknown as EventListener);
     });
 
     return <div class="slider">
@@ -70,14 +116,10 @@ export interface CarouselItemProps {
 
 export const CarouselItem: Component<CarouselItemProps> = (props) => {
     return (
-        <div class="slide">
-            <h3 class="title">{props.title}</h3>
-            <div class="content">
-                {props.description}
-            </div>
-            <div class="slide-footer">
-                <Button variant={Variant.Primary} size={Size.Sm}>Play Now</Button>
-            </div>
-        </div>
+        <Card
+            heading={props.title}
+            content={props.description}
+            footer={<Button variant={Variant.Primary} fit={Fit.Block} size={Size.Sm}>Play Now</Button>}
+        />
     );
 }
