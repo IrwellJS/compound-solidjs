@@ -1,125 +1,106 @@
-import {Component, createEffect, createSignal, onCleanup, onMount} from "solid-js";
-import {Fit, Shape, Size, Variant} from "../../../types";
+import {Component, For, JSXElement, mergeProps, onMount} from "solid-js";
+import {Shape, Size} from "../../../types";
 import {Button} from "../../inputs";
-import {ChevronLeftIcon, ChevronRightIcon} from "../../icons";
-import {Card} from "../Card";
 
 import './styles.css';
-import {createBreakpoints} from "@solid-primitives/media";
-import {TouchEvent, TouchEventHandler} from "react";
+import "swiper/css";
+import Swiper from "swiper";
+import { Navigation } from "swiper/modules";
+import {ChevronLeftIcon, ChevronRightIcon} from "../../icons";
+import React from "react";
+import type {SwiperOptions} from "swiper/types/swiper-options";
 
-export interface CarouselProps {
-    title: string;
+export interface BreakpointItem {
+    pixels: number,
+    slidesPerView: number,
 }
 
-const breakpoints = {
-    sm: "640px",
-    md: "1024px",
+export interface Breakpoints {
+    points: BreakpointItem[];
+    defaultSlidesPerView: number,
+}
+
+export interface CarouselProps {
+    title: string,
+    breakpointBase?: 'window' | 'container',
+    breakpoints?: Breakpoints,
+    children: JSXElement[],
+}
+
+const defaultBreakpoints: Breakpoints = {
+    points: [
+        {
+            pixels: 640,
+            slidesPerView: 2,
+        },
+        {
+            pixels: 1024,
+            slidesPerView: 3,
+        },
+    ],
+    defaultSlidesPerView: 1,
 };
 
 export const Carousel: Component<CarouselProps> = (props) => {
-    const [numberOfSlides, setNumberOfSlides] = createSignal(0);
-    const [slideWidth, setSlideWidth] = createSignal(42);
-    const [itemsPerView, setItemsPerView] = createSignal(3);
-    const [currentSlideIndex, setCurrentSlideIndex] = createSignal(0);
-    const [adjustment, setAdjustment] = createSignal(0);
-
-    const matches = createBreakpoints(breakpoints, {
-        mediaFeature: 'min-width',
-    });
-
-    function nextSlide() {
-        const nextIndex = (currentSlideIndex() + 1) % numberOfSlides();
-        setCurrentSlideIndex(nextIndex);
-    }
-
-    function previousSlide() {
-        const prevIndex = (currentSlideIndex() - 1 + numberOfSlides()) % numberOfSlides();
-        setCurrentSlideIndex(prevIndex);
-    }
+    const merged: Required<CarouselProps> = mergeProps({
+        breakpoints: defaultBreakpoints,
+        breakpointBase: 'window' as 'window',
+    }, props);
 
     let carouselContainer!: HTMLDivElement;
-    function updateSlidePosition() {
-        carouselContainer.style.transform = `translateX(calc(-${currentSlideIndex() * slideWidth()}% - ${currentSlideIndex() * 24}px + ${adjustment()}px))`;
-    }
-
-    createEffect(() => {
-        setNumberOfSlides(carouselContainer.getElementsByTagName('div').length);
-
-        if (matches.md) {
-            setSlideWidth(30);
-        } else if(matches.sm) {
-            setSlideWidth(42);
-        } else {
-            setSlideWidth(85);
-        }
-
-        updateSlidePosition();
-    });
-
-    const [touchStartX, setTouchStartX] = createSignal(0);
-
-    const touchStart: TouchEventHandler = (ev: TouchEvent) => {
-        setTouchStartX(ev.touches[0].clientX);
-    }
-    const touchMove = (e: TouchEvent) => {
-        setAdjustment(e.touches[0].clientX - touchStartX());
-    }
-    const touchEnd = (e: TouchEvent) => {
-        setAdjustment(e.touches[0].clientX - touchStartX());
-    }
+    let prevButton!: HTMLDivElement;
+    let nextButton!: HTMLDivElement;
 
     onMount(() => {
-        carouselContainer.addEventListener('touchstart', touchStart as unknown as EventListener);
-        carouselContainer.addEventListener('touchmove', touchMove as unknown as EventListener);
-        carouselContainer.addEventListener('touchend', touchEnd as unknown as EventListener);
-    });
-    onCleanup(() => {
-        removeEventListener('touchstart', touchStart as unknown as EventListener);
-        removeEventListener('touchmove', touchMove as unknown as EventListener);
-        removeEventListener('touchend', touchEnd as unknown as EventListener);
+        const options: SwiperOptions = {
+            modules: [Navigation],
+            slidesPerView: merged.breakpoints.defaultSlidesPerView,
+            spaceBetween: 20,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 100,
+            slidesPerGroup: 1,
+            loop: true,
+            loopAdditionalSlides: 1,
+            navigation: {
+                nextEl: nextButton,
+                prevEl: prevButton,
+            },
+            breakpointsBase: merged.breakpointBase,
+        };
+
+        if (merged.breakpoints.points.length != 0) {
+            options.breakpoints = {};
+            merged.breakpoints.points.forEach((item: BreakpointItem) => {
+                options.breakpoints[item.pixels] = {
+                    slidesPerView: item.slidesPerView,
+                }
+            });
+        }
+        new Swiper(carouselContainer, options);
     });
 
-    return <div class="slider">
+    return <div class="slider" ref={carouselContainer}>
         <div class="header">
             <h2 class="title">{props.title}</h2>
             <div class="controls">
                 <Button
+                    ref={prevButton}
                     shape={Shape.Circle}
-                    disabled={currentSlideIndex() === 0}
                     size={Size.Sm}
-                    onClick={() => previousSlide()}
+                    onClick={() => {}}
                 ><ChevronLeftIcon/></Button>
                 <Button
+                    ref={nextButton}
                     shape={Shape.Circle}
-                    disabled={currentSlideIndex() === numberOfSlides() - itemsPerView()}
                     size={Size.Sm}
-                    onClick={() => nextSlide()}
+                    onClick={() => {}}
                 ><ChevronRightIcon/></Button>
             </div>
         </div>
-        <div class="show" ref={carouselContainer}>
-            <CarouselItem title="Infinite Wordle" description="Guess the five letter word. Play as many rounds as you like."/>
-            <CarouselItem title="one" description="some item"/>
-            <CarouselItem title="one" description="some item"/>
-            <CarouselItem title="one" description="some item"/>
-            <CarouselItem title="one" description="some item"/>
-            <CarouselItem title="one" description="some item"/>
+        <div class="swiper-wrapper">
+            <For each={merged.children}>
+                {(item) => <div class="swiper-slide">{item}</div>}
+            </For>
         </div>
     </div>;
-}
-
-export interface CarouselItemProps {
-    title: string;
-    description: string;
-}
-
-export const CarouselItem: Component<CarouselItemProps> = (props) => {
-    return (
-        <Card
-            heading={props.title}
-            content={props.description}
-            footer={<Button variant={Variant.Primary} fit={Fit.Block} size={Size.Sm}>Play Now</Button>}
-        />
-    );
 }
