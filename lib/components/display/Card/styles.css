@@ -1,0 +1,15 @@
+.card {
+    @apply overflow-hidden rounded-lg bg-white shadow flex flex-col m-0.5;
+    &>* {
+        @apply px-4 py-4;
+    }
+    .card-heading {
+        @apply font-bold;
+    }
+    .card-content {
+        @apply flex-grow;
+    }
+    .card-heading + .card-content {
+        @apply pt-0;
+    }
+}

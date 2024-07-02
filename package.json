@@ -49,7 +49,11 @@
     "solid-js": "^1.7.6"
   },
   "dependencies": {
-    "daisyui": "^4.5.0"
+    "@fontsource/roboto": "^5.0.13",
+    "@solid-primitives/media": "^2.2.9",
+    "daisyui": "^4.5.0",
+    "solid-icons": "^1.1.0",
+    "swiper": "^11.1.4"
   },
   "sideEffects": [
     "**/*.css"

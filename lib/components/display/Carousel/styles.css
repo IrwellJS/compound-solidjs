@@ -1,0 +1,20 @@
+.slider {
+    overflow: hidden;
+    .header {
+        display: flex;
+        align-items: start;
+        margin-bottom: 1rem;
+        .title {
+            @apply text-2xl font-bold m-0;
+        }
+        .controls {
+            display: flex;
+            margin-left: auto;
+            gap: 5px;
+        }
+    }
+    .swiper-slide {
+        height: auto;
+        display: grid;
+    }
+}

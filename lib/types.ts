@@ -11,6 +11,13 @@ export enum AspectRatio {
     Cinema = '21-9',
 }
 
+export enum Level {
+    Base100 = '100',
+    Base200 = '200',
+    Base300 = '300',
+    BaseContent = 'content',
+}
+
 export enum Shape {
     Circle = 'circle',
     Square = 'square',
