@@ -1,4 +1,5 @@
-name: Generate tag version
+name: Generate tag version and Publish package on NPM
+
 on:
   workflow_dispatch:
     inputs:
@@ -23,13 +24,29 @@ jobs:
       - run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Use Node.js 20
+        uses: actions/setup-node@v2
         with:
-          node-version: 14.x
+          node-version: 20
 
       - name: Generate new version
         run: npm version ${{ github.event.inputs.version }}
 
       - name: Push new version tag to repository
         run: git push origin main --tags
+
+  publish:
+    name: Publish package on NPM
+    runs-on: ubuntu-latest
+    needs: version
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish --access=public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
