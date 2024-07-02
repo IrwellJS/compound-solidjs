@@ -69,12 +69,13 @@ export const Carousel: Component<CarouselProps> = (props) => {
         };
 
         if (merged.breakpoints.points.length != 0) {
-            options.breakpoints = {};
+            const bp: {[width: number]: SwiperOptions;} = {};
             merged.breakpoints.points.forEach((item: BreakpointItem) => {
-                options.breakpoints[item.pixels] = {
+                bp[item.pixels] = {
                     slidesPerView: item.slidesPerView,
                 }
             });
+            options.breakpoints = bp;
         }
         new Swiper(carouselContainer, options);
     });

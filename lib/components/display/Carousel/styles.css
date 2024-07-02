@@ -2,7 +2,7 @@
     overflow: hidden;
     .header {
         display: flex;
-        align-items: start;
+        align-items: flex-start;
         margin-bottom: 1rem;
         .title {
             @apply text-2xl font-bold m-0;
