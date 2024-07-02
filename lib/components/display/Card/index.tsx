@@ -1,9 +1,8 @@
 import {Component, JSXElement} from "solid-js";
-
-import './styles.css';
 import {Button} from "../../inputs";
 import {Fit, Size, Variant} from "../../../types";
-import React from "react";
+
+import './styles.css';
 
 export interface CardProps {
     heading?: JSXElement | string,
@@ -43,7 +42,7 @@ export const OneActionCard: Component<OneActionCardProps> = (props) => {
         <Card
             heading={props.title}
             content={props.description}
-            footer={<Button variant={Variant.Primary} fit={Fit.Block} size={Size.Sm} onClick={props.actionClick}>props.actionLabel</Button>}
+            footer={<Button variant={Variant.Primary} fit={Fit.Block} size={Size.Sm} onClick={props.actionClick}>{props.actionLabel}</Button>}
         />
     );
 }
