@@ -1,14 +1,13 @@
 import {Component, For, JSXElement, mergeProps, onMount} from "solid-js";
+import Swiper from "swiper";
+import type {SwiperOptions} from "swiper/types/swiper-options";
+import { Navigation } from "swiper/modules";
+import {ChevronLeftIcon, ChevronRightIcon} from "../../icons";
 import {Shape, Size} from "../../../types";
 import {Button} from "../../inputs";
 
 import './styles.css';
 import "swiper/css";
-import Swiper from "swiper";
-import { Navigation } from "swiper/modules";
-import {ChevronLeftIcon, ChevronRightIcon} from "../../icons";
-import React from "react";
-import type {SwiperOptions} from "swiper/types/swiper-options";
 
 export interface BreakpointItem {
     pixels: number,
