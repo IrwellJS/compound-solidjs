@@ -1,15 +1,15 @@
-.card {
+.crd {
     @apply overflow-hidden rounded-lg bg-white shadow flex flex-col m-0.5;
     &>* {
         @apply px-4 py-4;
     }
-    .card-heading {
+    .crd-heading {
         @apply font-bold;
     }
-    .card-content {
+    .crd-content {
         @apply flex-grow;
     }
-    .card-heading + .card-content {
+    .crd-heading + .crd-content {
         @apply pt-0;
     }
 }

@@ -12,13 +12,13 @@ export interface CardProps {
 
 export const Card: Component<CardProps> = (props) => {
     return (
-        <div class="card">
+        <div class="crd">
             {props.heading &&
-                <div class="card-heading">
+                <div class="crd-heading">
                     {props.heading}
                 </div>
             }
-            <div class="card-content">
+            <div class="crd-content">
                 {props.content}
             </div>
             {props.footer &&
