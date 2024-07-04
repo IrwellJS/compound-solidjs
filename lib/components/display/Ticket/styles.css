@@ -1,0 +1,14 @@
+.ticket {
+    @apply divide-y divide-gray-200 overflow-hidden rounded-lg shadow m-0.5;
+    &>* {
+        @apply p-4;
+    }
+    .ticket-header {
+        @apply font-bold;
+    }
+    .ticket-content {
+    }
+    .ticket-footer {
+        @apply bg-gray-50;
+    }
+}
