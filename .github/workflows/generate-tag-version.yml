@@ -1,9 +1,6 @@
 name: Generate tag version and Publish package on NPM
 
 on:
-  push:
-    tags:
-      - '*'
   workflow_dispatch:
     inputs:
       version:
@@ -20,6 +17,8 @@ jobs:
   version:
     name: Create new version ${{ github.event.inputs.version }}
     runs-on: ubuntu-latest
+    outputs:
+      new_tag: ${{ steps.bump_version.outputs.new_tag }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -37,7 +36,12 @@ jobs:
           git config user.email github-actions@github.com
 
       - name: Bump version
-        run: npm version ${{ github.event.inputs.version }}
+        id: bump_version
+        run: |
+          NEW_VERSION=$(npm version ${{ github.event.inputs.version }})
+          echo "New version is $NEW_VERSION"
+          echo "new_tag=${NEW_VERSION}" >> $GITHUB_ENV
+          echo "::set-output name=new_tag::${NEW_VERSION}"
 
       - name: Push new version tag
         run: git push origin main --tags
@@ -52,6 +56,8 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: ${{ needs.version.outputs.new_tag }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
