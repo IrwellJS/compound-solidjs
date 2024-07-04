@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from 'storybook-solidjs';
 
 import {Ticket, TicketProps} from './index';
-import {BackgroundType} from "../../../partials/Background";
+import {BackgroundType} from "../../../types";
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/solid/writing-stories/introduction
 const meta: Meta<typeof Ticket> = {

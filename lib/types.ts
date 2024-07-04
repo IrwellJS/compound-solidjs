@@ -51,6 +51,18 @@ export enum NoteVariant {
 export const AllVariants = { ...Variant, ...NoteVariant};
 export type AllVariants = typeof AllVariants;
 
+enum GradientBackground {
+    Azure = 'azure',
+    Butterfly = 'butterfly',
+    Lime = 'lime',
+    Malibu = 'malibu',
+    Mojito = 'mojito',
+    Neon = 'neon',
+    Peach = 'peach',
+}
+export const BackgroundType = {...AllVariants, ...GradientBackground};
+export type BackgroundType = typeof BackgroundType;
+
 export enum Orientation {
     Horizontal = 'horizontal',
     Vertical = 'vertical',
@@ -58,4 +70,19 @@ export enum Orientation {
 
 export interface CanBeJoinChild {
     isJoinChild?: boolean;
+}
+
+export enum MaxWidth {
+    Xs = 'xs',
+    Sm = 'sm',
+    Md = 'md',
+    Lg = 'lg',
+    Xl = 'xl',
+    Xl2 = '2xl',
+    Xl3 = '3xl',
+    Xl4 = '4xl',
+    Xl5 = '5xl',
+    Xl6 = '6xl',
+    Xl7 = '7xl',
+    full = 'full',
 }
