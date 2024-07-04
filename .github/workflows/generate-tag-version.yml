@@ -40,8 +40,7 @@ jobs:
         run: |
           NEW_VERSION=$(npm version ${{ github.event.inputs.version }})
           echo "New version is $NEW_VERSION"
-          echo "new_tag=${NEW_VERSION}" >> $GITHUB_ENV
-          echo "::set-output name=new_tag::${NEW_VERSION}"
+          echo "new_tag=${NEW_VERSION}" >> $GITHUB_OUTPUT
 
       - name: Push new version tag
         run: git push origin main --tags
