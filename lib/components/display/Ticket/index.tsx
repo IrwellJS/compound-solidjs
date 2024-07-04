@@ -3,6 +3,14 @@ import {getBackgroundClass, PartialBackgroundProps} from "../../../partials/Back
 
 import './styles.css';
 
+// This is a safe list of classes so that the tree shaking can run correctly on css
+const classSafeList = [
+    'ticket',
+    'ticket-header',
+    'ticket-content',
+    'ticket-footer',
+];
+
 export interface TicketProps extends PartialBackgroundProps {
     header?: string | JSXElement;
     content: string | JSXElement;
