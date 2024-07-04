@@ -1,6 +1,5 @@
 export * from './Badge';
 export * from './Blockquote';
-export * from './Card';
 export * from './Carousel';
 export * from './Codeblock';
 export * from './Image';
