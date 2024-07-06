@@ -1,5 +1,5 @@
 .background-basic {
-    @apply bg-white;
+    @apply bg-white text-black;
 }
 .background-primary {
     @apply bg-primary;
