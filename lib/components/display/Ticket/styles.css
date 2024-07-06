@@ -1,14 +1,18 @@
 .ticket {
-    @apply divide-y divide-gray-200 overflow-hidden rounded-lg shadow m-0.5;
+    @apply overflow-hidden rounded-lg shadow m-0.5 flex flex-col;
     &>* {
         @apply p-4;
     }
     .ticket-header {
-        @apply font-bold;
+        @apply font-bold pb-2;
     }
     .ticket-content {
+        @apply flex-grow;
     }
     .ticket-footer {
-        @apply bg-gray-50;
+        @apply pt-2;
+    }
+    .ticket-header + .ticket-content {
+        @apply pt-2;
     }
 }

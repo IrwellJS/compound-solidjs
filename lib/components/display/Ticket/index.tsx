@@ -1,5 +1,5 @@
 import {Component, JSXElement} from "solid-js";
-import {PartialBackgroundProps} from "../../../partials/Background";
+import {getBackgroundClass, PartialBackgroundProps} from "../../../partials/Background";
 
 import './styles.css';
 
@@ -11,7 +11,7 @@ export interface TicketProps extends PartialBackgroundProps {
 
 export const Ticket: Component<TicketProps> = (props) => {
     return (
-        <div class="ticket">
+        <div class={`ticket ${getBackgroundClass(props)}`}>
             {props.header && <div class="ticket-header">{props.header}</div>}
             <div class="ticket-content">{props.content}</div>
             {props.footer && <div class="ticket-footer">{props.footer}</div>}

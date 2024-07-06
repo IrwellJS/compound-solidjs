@@ -1,0 +1,15 @@
+.padding-xs {
+    @apply p-2;
+}
+.padding-sm {
+    @apply p-4;
+}
+.padding-md {
+    @apply p-8;
+}
+.padding-lg {
+    @apply p-12;
+}
+.padding-0 {
+    @apply p-0;
+}

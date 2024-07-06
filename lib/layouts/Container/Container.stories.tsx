@@ -1,7 +1,11 @@
 import type {Meta, StoryObj} from 'storybook-solidjs';
 
 import {Container, ContainerProps} from './index';
-import {BackgroundType, MaxWidth} from "../../types";
+import {Padding} from "../../types";
+import {backgroundType} from "../../partials/Background/storyArgType";
+import {padding} from "../../partials/Padding/storyArgType";
+import {maxWidth} from "../../partials/MaxWidth/storyArgType";
+import {BackgroundType} from "../../../dist";
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/solid/writing-stories/introduction
 const meta: Meta<typeof Container> = {
@@ -9,24 +13,9 @@ const meta: Meta<typeof Container> = {
     component: Container,
     tags: ['autodocs'],
     argTypes: {
-        backgroundType: {
-            description: 'The background colour type',
-            defaultValue: BackgroundType.Primary,
-            options: Object.values(BackgroundType),
-            mapping: BackgroundType,
-            control: {
-                type: 'select',
-            },
-        },
-        maxWidth: {
-            description: 'Max Width of container',
-            defaultValue: MaxWidth.Xl7,
-            options: Object.values(MaxWidth),
-            mapping: MaxWidth,
-            control: {
-                type: 'select',
-            },
-        },
+        backgroundType,
+        maxWidth,
+        padding,
     }
 };
 
@@ -36,8 +25,9 @@ type Story = StoryObj<typeof meta>;
 const getStory = (props: Partial<ContainerProps>): Story => {
     return {
         args: {
-            type: BackgroundType.Basic,
             children: 'My content',
+            backgroundType: BackgroundType.Azure,
+            padding: Padding.Sm,
             ...props
         }
     }

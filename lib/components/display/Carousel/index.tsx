@@ -58,7 +58,7 @@ export const Carousel: Component<CarouselProps> = (props) => {
             slidesOffsetBefore: 0,
             slidesOffsetAfter: 100,
             slidesPerGroup: 1,
-            loop: true,
+            loop: false,
             loopAdditionalSlides: 1,
             navigation: {
                 nextEl: nextButton,

@@ -4,7 +4,7 @@ import './styles.css';
 
 // This is a safe list of classes so that the tree shaking can run correctly on css
 const classSafeList = [
-    'background-badge',
+    'background-basic',
     'background-primary',
     'background-secondary',
     'background-accent',
@@ -29,5 +29,5 @@ export interface PartialBackgroundProps {
 }
 
 export const getBackgroundClass = (props: PartialBackgroundProps): string => {
-    return `background-${props.backgroundType || 'default'}`;
+    return `background-${props.backgroundType || 'basic'}`;
 }

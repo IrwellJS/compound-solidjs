@@ -1,6 +1,7 @@
 import {Component, JSXElement} from "solid-js";
 import {getBackgroundClass, PartialBackgroundProps} from "../../partials/Background";
-import {MaxWidth} from "../../types";
+import {getPaddingClass, PartialPaddingProps} from "../../partials/Padding";
+import {getMaxWidthClass, PartialMaxWidthProps} from "../../partials/MaxWidth";
 
 // This is a safe list of classes so that the tree shaking can run correctly on css
 const classSafeList = [
@@ -16,16 +17,20 @@ const classSafeList = [
     'max-w-6xl',
     'max-w-7xl',
     'max-w-full',
+    'max-w-auto',
 ];
 
-export interface ContainerProps extends PartialBackgroundProps {
+export interface ContainerProps extends
+    PartialBackgroundProps,
+    PartialPaddingProps,
+    PartialMaxWidthProps
+{
     children?: JSXElement;
-    maxWidth?: MaxWidth;
 }
 
 export const Container: Component<ContainerProps> = (props) => {
     return (
-        <div class={`max-w-${props.maxWidth || MaxWidth.Xl7} ${getBackgroundClass(props)} m-auto`}>
+        <div class={`m-auto ${getMaxWidthClass(props)} ${getBackgroundClass(props)} ${getPaddingClass(props)}`}>
             {props.children}
         </div>
     );
