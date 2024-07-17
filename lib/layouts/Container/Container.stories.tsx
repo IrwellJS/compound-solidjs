@@ -1,11 +1,10 @@
 import type {Meta, StoryObj} from 'storybook-solidjs';
 
 import {Container, ContainerProps} from './index';
-import {Padding} from "../../types";
+import {GradientBackground, Padding} from "../../types";
 import {backgroundType} from "../../partials/Background/storyArgType";
 import {padding} from "../../partials/Padding/storyArgType";
 import {maxWidth} from "../../partials/MaxWidth/storyArgType";
-import {BackgroundType} from "../../../dist";
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/solid/writing-stories/introduction
 const meta: Meta<typeof Container> = {
@@ -26,7 +25,7 @@ const getStory = (props: Partial<ContainerProps>): Story => {
     return {
         args: {
             children: 'My content',
-            backgroundType: BackgroundType.Azure,
+            backgroundType: GradientBackground.Azure,
             padding: Padding.Sm,
             ...props
         }

@@ -1,5 +1,5 @@
 import {Component, JSXElement, splitProps} from 'solid-js';
-import {AllVariants, Size} from '../../../types';
+import {NoteVariant, Size, Variant} from '../../../types';
 import Badge from '../Badge';
 
 // This is a safe list of classes so that the tree shaking can run correctly on css
@@ -15,7 +15,7 @@ const classSafeList = [
 export interface IndicatorProps {
     children: string | JSXElement;
     label: string;
-    variant: AllVariants;
+    variant: Variant | NoteVariant;
     size?: Size;
 }
 
@@ -28,8 +28,8 @@ export const Indicator: Component<IndicatorProps> = (props) => {
 
     return (
         <div class="indicator">
-            <Badge extraClasses="indicator-item" {...props}>{props.label}</Badge>
-            {props.children}
+            <Badge extraClasses="indicator-item" {...rest}>{local.label}</Badge>
+            {local.children}
         </div>
     );
 }

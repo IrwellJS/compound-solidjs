@@ -1,7 +1,7 @@
 import type {Meta, StoryObj} from 'storybook-solidjs';
 
 import {Ticket, TicketProps} from './index';
-import {BackgroundType} from "../../../types";
+import {BackgroundType, Variant} from "../../../types";
 
 // More on how to set up stories at: https://storybook.js.org/docs/7.0/solid/writing-stories/introduction
 const meta: Meta<typeof Ticket> = {
@@ -12,7 +12,7 @@ const meta: Meta<typeof Ticket> = {
     argTypes: {
         backgroundType: {
             description: 'The background colour type',
-            defaultValue: BackgroundType.Basic,
+            defaultValue: Variant.Basic,
             options: Object.values(BackgroundType),
             mapping: BackgroundType,
             control: {

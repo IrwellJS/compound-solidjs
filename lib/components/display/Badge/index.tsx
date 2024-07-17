@@ -1,5 +1,5 @@
 import {Component, JSXElement} from 'solid-js';
-import {AllVariants, Size} from '../../../types';
+import {AllVariants, NoteVariant, Size, Variant} from '../../../types';
 
 // This is a safe list of classes so that the tree shaking can run correctly on css
 const classSafeList = [
@@ -21,7 +21,7 @@ const classSafeList = [
 ];
 
 export interface BadgeProps {
-    variant: AllVariants;
+    variant: Variant | NoteVariant;
     children: string | JSXElement;
     outline?: boolean;
     size?: Size;
