@@ -93,3 +93,10 @@ export enum Padding {
     Lg = 'lg',
     None = '0',
 }
+
+export enum Position {
+    Top = 'top',
+    Right = 'right',
+    Bottom = 'bottom',
+    Left = 'left',
+}

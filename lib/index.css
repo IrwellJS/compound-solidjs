@@ -41,7 +41,7 @@ ol {
     @apply list-decimal;
 }
 ul li, ol li {
-    @apply my-2 pr-2;
+    @apply my-2;
 }
 
 a {

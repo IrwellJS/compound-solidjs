@@ -1,0 +1,25 @@
+.dropdown {
+    ul {
+        margin: 0;
+        li {
+            margin: 0;
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+    }
+
+    &.dropdown-top ul {
+        @apply mb-1;
+    }
+    &.dropdown-bottom ul {
+        @apply mt-1;
+    }
+    &.dropdown-left ul {
+        @apply mr-1;
+    }
+    &.dropdown-right ul {
+        @apply ml-1;
+    }
+}
