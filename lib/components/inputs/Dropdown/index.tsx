@@ -28,7 +28,7 @@ export const Dropdown: Component<DropdownProps> = (props) => {
 
     return (
         <div class={`dropdown dropdown-${mp()}`}>
-            <Button {...props.buttonProps}>Dropdown</Button>
+            <Button {...props.buttonProps} />
             <ul tabIndex="0" class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                 {props.children.map((child) => {
                     const aProps: DisplayA = {};
