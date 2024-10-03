@@ -30,13 +30,13 @@ const getLabel = (props: InputProps) => {
 
     return (
         <div class="label">
-            {props.label && <span class="label-text">{props.label}</span>}
+            {props.label && <span class="block text-sm font-semibold text-gray-600">{props.label}</span>}
             {props.labelExtra && <span class="label-text-alt">{props.labelExtra}</span>}
         </div>
     );
 }
 
-const Field: Component<InputProps> = (props) => {
+export const Field: Component<InputProps> = (props) => {
 
     const [local, rest] = splitProps(props, localKeys);
     const [classes, setClasses] = createSignal(initClasses);
