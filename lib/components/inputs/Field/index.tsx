@@ -9,6 +9,8 @@ const classSafeList = [
     'input-xs',
     'input-sm',
     'input-lg',
+    'text-xs',
+    'text-sm'
 ];
 const initClasses = 'input input-bordered w-full max-w-xs';
 
@@ -30,7 +32,7 @@ const getLabel = (props: InputProps) => {
 
     return (
         <div class="label">
-            {props.label && <span class="block text-sm font-semibold text-gray-600">{props.label}</span>}
+            {props.label && <span class={`block text-${props.size == Size.Xs || props.size == Size.Sm ? "xs" : "sm"} font-semibold text-gray-600`}>{props.label}</span>}
             {props.labelExtra && <span class="label-text-alt">{props.labelExtra}</span>}
         </div>
     );
