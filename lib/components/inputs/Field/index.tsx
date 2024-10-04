@@ -12,7 +12,7 @@ const classSafeList = [
     'text-xs',
     'text-sm'
 ];
-const initClasses = 'input input-bordered w-full max-w-xs';
+const initClasses = 'input input-bordered w-full';
 
 interface InputProps extends CanBeJoinChild  {
     label?: string;
@@ -61,7 +61,7 @@ export const Field: Component<InputProps> = (props) => {
     });
 
     return (
-        <label class="form-control w-full max-w-xs">
+        <label class="form-control w-full">
             {getLabel(local)}
             <input
                 class={classes()}
