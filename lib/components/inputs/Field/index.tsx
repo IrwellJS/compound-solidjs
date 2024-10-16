@@ -21,6 +21,12 @@ interface InputProps extends CanBeJoinChild  {
     variant?: NoteVariant;
     size?: Size;
     disabled?: boolean;
+
+    // Generic HTML events
+    onChange?: (event: InputEvent) => void;
+    onInput?: (event: InputEvent) => void;
+    onFocus?: (event: FocusEvent) => void;
+    onBlur?: (event: FocusEvent) => void;
 }
 
 const localKeys: Array<keyof InputProps> = ['label', 'labelExtra', 'variant', 'size', 'isJoinChild'];
