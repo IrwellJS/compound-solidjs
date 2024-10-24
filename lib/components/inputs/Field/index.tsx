@@ -21,6 +21,7 @@ interface InputProps extends CanBeJoinChild  {
     variant?: NoteVariant;
     size?: Size;
     disabled?: boolean;
+    value?: string;
 
     // Generic HTML events
     onChange?: (event: InputEvent) => void;
