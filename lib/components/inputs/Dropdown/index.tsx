@@ -6,7 +6,7 @@ import './styles.css';
 
 export interface ChildItem {
     label: string;
-    action: string | (() => void);
+    action: string | ((event: MouseEvent) => void);
 }
 
 export interface DropdownProps {
@@ -17,7 +17,7 @@ export interface DropdownProps {
 
 export interface DisplayA {
     href?: string;
-    onClick?: () => void;
+    onClick?: (event: MouseEvent) => void;
 }
 
 export const Dropdown: Component<DropdownProps> = (props) => {
